@@ -5,4 +5,5 @@ pragma solidity ^0.8.20;
 ///         their paired RevocationRegistry during registration.
 interface IRevocationRegistry {
     function register(bytes32 hash) external;
+    function isValid(bytes32 hash) external view returns (bool);
 }
