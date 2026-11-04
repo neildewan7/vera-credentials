@@ -46,7 +46,10 @@ Plan and dates: see `docs/TIMELINE.md`. Keep it updated.
 - Prefer small, reviewable changes. Explain the reasoning briefly so teammates can follow it.
 - Contract interface freeze is planned for Nov 13; changes after that need team agreement.
 
+## What "production" means (answered by the mentor, 2026-11-04)
+What we propose/build gets deployed to a public testnet, using synthetic data — that testnet deployment *is* the deliverable we pitch. Fully production-level (real HDSI integration, presumably real data and real users) is explicitly out of scope for this capstone; it happens after this project, if at all. This also means synthetic data is sufficient for the entire project, not just a fallback — real graduate data is not required to meet the mentor's bar.
+
 ## Open questions (do not assume answers)
-For the mentor: meaning of "CRM" and "production" (prototype vs. real HDSI pilot vs. UCSD-wide service), who the real first users are, department view scope, whether reusing last year's code as a base is fine for the code grade, whether there's a maintenance path after this team graduates.
-For the dean/Registrar/compliance: formal written confirmation of real graduate data use (whose records, under what consent), whether IRB review is needed, whether degree data counts as directory information at UCSD.
+For the mentor: meaning of "CRM", who the real first users are, department view scope, whether reusing last year's code as a base is fine for the code grade, whether there's a maintenance path after this team graduates.
+For the dean/Registrar/compliance: no longer blocking, since synthetic data satisfies the project's actual bar — real graduate data use is optional, not required, so this doesn't need to be resolved before proceeding (still worth confirming eventually if the team wants to use real data for its own sake).
 Team decisions still open: Dataset/Media templates — extend to match Document or drop; final chain choice (Polygon Amoy is the default, to be decided by measured gas cost against Arbitrum Sepolia and Base Sepolia); end-to-end integration test across all five contracts not yet written.
