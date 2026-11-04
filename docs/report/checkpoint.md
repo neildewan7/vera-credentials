@@ -13,7 +13,7 @@ Owner: TBD   Status: skeleton only
 - Problem: nothing verifiable ties a degree to a person or to other credentials.
 - Approach: extend Vera with an issuer registry, revocation-aware verification, holder-signed links from credentials to the degree, and a report that shows a trust level per item.
 - Evaluation: gas cost per operation across testnets, verification latency, comparison against a signed-files baseline.
-- Status at checkpoint: working Vera base with 44 passing tests, redesign in progress.
+- Status at checkpoint: `IssuerRegistry`, `SelfReportedRegistry`, `CredentialRegistry` built, plus `verify()` and a holder field on `DocumentRegistryTemplate` — 77 passing tests. Dataset/Media templates not yet updated to match. Testnet deploy and gas comparison not yet run.
 
 ## Introduction
 1. The problem (from `problem.md`).
