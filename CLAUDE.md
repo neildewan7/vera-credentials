@@ -45,6 +45,7 @@ Plan and dates: see `docs/TIMELINE.md`. Keep it updated.
 - Ask before deploying to a public testnet, changing the contract interface after Gate G3, or deleting files.
 - Prefer small, reviewable changes. Explain the reasoning briefly so teammates can follow it.
 - Contract interface freeze is planned for Nov 13; changes after that need team agreement.
+- Check the repo's GitHub Issues for the current task list before asking "what should I work on" — each issue's body has the specific scope (which events/tables/functions are involved) for that piece of work. See also `docs/DEPLOYMENTS.md` for addresses already deployed to testnets.
 
 ## What "production" means (answered by the mentor, 2026-11-04)
 What we propose/build gets deployed to a public testnet, using synthetic data — that testnet deployment *is* the deliverable we pitch. Fully production-level (real HDSI integration, presumably real data and real users) is explicitly out of scope for this capstone; it happens after this project, if at all. This also means synthetic data is sufficient for the entire project, not just a fallback — real graduate data is not required to meet the mentor's bar.
