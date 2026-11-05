@@ -4,7 +4,7 @@ UCSD DSC 180A/B capstone, blockchain domain, mentor Prof. Rajesh Gupta. Extends 
 
 **What this is:** a smart-contract system where an HDSI degree is the root of a person's verifiable identity, and other credentials (certificates, external qualifications) can attach to it with a clear trust level — issuer-verified, or self-reported. See `CLAUDE.md` for full project context and `docs/DECISIONS.md` for the reasoning behind specific design choices.
 
-This quarter's scope is the on-chain contracts only, deployed to a public testnet with synthetic data — that testnet deployment is the actual deliverable (confirmed with the mentor, see `CLAUDE.md`). No backend, database, or app exists yet; those are planned for Winter.
+This quarter's scope is the on-chain contracts only, deployed to a public testnet with synthetic data (See `CLAUDE.md` for context). No backend, database, or app exists yet; those are planned for Winter.
 
 ## Repo structure
 
