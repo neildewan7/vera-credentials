@@ -156,30 +156,30 @@ describe("RegistryFactory + RevocationRegistry", function () {
     });
 
     it("should register document on verification registry", async function () {
-      await verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc");
+      await verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc", user1.address);
       expect(await verification.verifyDocument(docHash, docHash)).to.be.true;
     });
 
     it("should mirror-register hash on revocation registry", async function () {
-      await verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc");
+      await verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc", user1.address);
       expect(await revocation.isRegistered(docHash)).to.be.true;
     });
 
     it("should show hash as valid (registered + not revoked)", async function () {
-      await verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc");
+      await verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc", user1.address);
       expect(await revocation.isValid(docHash)).to.be.true;
     });
 
     it("should reject duplicate registration", async function () {
-      await verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc");
+      await verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc", user1.address);
       await expect(
-        verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc2")
+        verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc2", user1.address)
       ).to.be.revertedWith("Document exists");
     });
 
     it("should reject registration from non-owner", async function () {
       await expect(
-        verification.connect(user2).registerDocument(docHash, docHash, "https://example.com/doc")
+        verification.connect(user2).registerDocument(docHash, docHash, "https://example.com/doc", user2.address)
       ).to.be.revertedWith("Not owner");
     });
   });
@@ -221,7 +221,7 @@ describe("RegistryFactory + RevocationRegistry", function () {
       revocation = await hre.ethers.getContractAt("RevocationRegistry", parsed.args.revocationRegistry);
 
       // Register a document first
-      await verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc");
+      await verification.connect(user1).registerDocument(docHash, docHash, "https://example.com/doc", user1.address);
     });
 
     it("should revoke a registered hash", async function () {
@@ -316,7 +316,7 @@ describe("RegistryFactory + RevocationRegistry", function () {
       const verification = await hre.ethers.getContractAt("DocumentRegistryTemplate", parsed.args.verificationRegistry);
       revocation = await hre.ethers.getContractAt("RevocationRegistry", parsed.args.revocationRegistry);
 
-      await verification.connect(user1).registerDocument(docHash, docHash, "uri");
+      await verification.connect(user1).registerDocument(docHash, docHash, "uri", user1.address);
     });
 
     it("should not allow non-owner to call register directly on revocation", async function () {
@@ -454,8 +454,8 @@ describe("RegistryFactory + RevocationRegistry", function () {
       const revB = await hre.ethers.getContractAt("RevocationRegistry", parsed2.args.revocationRegistry);
 
       // Register same hash in both
-      await verA.connect(user1).registerDocument(hash, hash, "uriA");
-      await verB.connect(user1).registerDocument(hash, hash, "uriB");
+      await verA.connect(user1).registerDocument(hash, hash, "uriA", user1.address);
+      await verB.connect(user1).registerDocument(hash, hash, "uriB", user1.address);
 
       // Revoke in A only
       await revA.connect(user1).revoke(hash, 1);
@@ -537,7 +537,7 @@ describe("RegistryFactory + RevocationRegistry", function () {
     reasons.forEach(({ id, name }) => {
       it(`should accept reason ${name} (${id})`, async function () {
         const hash = hre.ethers.id(`reason-test-${id}`);
-        await verification.connect(user1).registerDocument(hash, hash, "uri");
+        await verification.connect(user1).registerDocument(hash, hash, "uri", user1.address);
         await revocation.connect(user1).revoke(hash, id);
         expect(await revocation.getRevocationReason(hash)).to.equal(id);
       });
