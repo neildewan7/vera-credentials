@@ -1,10 +1,16 @@
 # Vera — Credential Registry (DSC 180A/B Capstone)
 
+A set of Solidity contracts that let a university-issued degree act as the root of a person's verifiable identity, with other credentials attaching to it at a clear trust level — issuer-verified or self-reported.
+
 UCSD DSC 180A/B capstone, blockchain domain, mentor Prof. Rajesh Gupta. Extends last year's Vera project (`FerdGitUCSD/b10-blockchain-blockthentic`) — credit to that team for the original factory + template + revocation-registry pattern this repo builds on.
+
+**My role:** this repo (contracts, tests, deploy scripts, docs) is my own work for the current capstone quarter, built solo on top of the prior team's design pattern (credited above).
 
 **What this is:** a smart-contract system where an HDSI degree is the root of a person's verifiable identity, and other credentials (certificates, external qualifications) can attach to it with a clear trust level — issuer-verified, or self-reported. See `CLAUDE.md` for full project context and `docs/DECISIONS.md` for the reasoning behind specific design choices.
 
 This quarter's scope is the on-chain contracts only, deployed to a public testnet with synthetic data (See `CLAUDE.md` for context). No backend, database, or app exists yet; those are planned for Winter.
+
+<!-- TODO(Neil): add a one-paragraph plain-English example (e.g. "a student registers their degree, then a certificate provider attaches a cert to it") if you want this more readable for a non-blockchain audience. -->
 
 ## Repo structure
 
@@ -54,7 +60,7 @@ npx hardhat run scripts/deployFactory.js --network amoy
 
 ## Current status
 
-9 contracts, 77 tests passing. `RegistryFactory` is deployed and confirmed live on Polygon Amoy — see `docs/DEPLOYMENTS.md` for the address. Full contract-by-contract writeup, including exactly what's tested and what's not yet built, is in `docs/report/implementation.md`.
+9 contracts, 77 tests passing. `RegistryFactory` is deployed and confirmed live on Polygon Amoy (practice deploy, factory only — see `docs/DEPLOYMENTS.md` for the address; the other contracts aren't deployed standalone yet). Full contract-by-contract writeup, including exactly what's tested and what's not yet built, is in `docs/report/implementation.md`.
 
 ## More context
 
