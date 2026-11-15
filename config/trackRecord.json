@@ -1,0 +1,27 @@
+{
+  "_comment": "Per-network settings for scripts/issuerTrackRecord.js, keyed by Hardhat network name. fromBlock should be the RegistryFactory deploy block (look it up on the block explorer); null means 'not set yet' and the script refuses to scan from block 0 on a public chain. blockChunk is the max block range per eth_getLogs call (free RPC tiers often cap it).",
+  "localhost": {
+    "factory": null,
+    "issuerRegistry": null,
+    "fromBlock": 0,
+    "blockChunk": 10000
+  },
+  "amoy": {
+    "factory": "0x7acBD69Cdb8B1B206747c4163454231D3Ccd2F2F",
+    "issuerRegistry": null,
+    "fromBlock": null,
+    "blockChunk": 2000
+  },
+  "sepolia": {
+    "factory": null,
+    "issuerRegistry": null,
+    "fromBlock": null,
+    "blockChunk": 2000
+  },
+  "arbitrumSepolia": {
+    "factory": null,
+    "issuerRegistry": null,
+    "fromBlock": null,
+    "blockChunk": 2000
+  }
+}

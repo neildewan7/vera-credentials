@@ -11,7 +11,9 @@ This quarter's scope is the on-chain contracts only, deployed to a public testne
 ```
 contracts/   Solidity contracts (see below)
 test/        Hardhat/Chai tests, one file per contract or feature area
-scripts/     Deploy scripts and a live-deployment sanity check
+scripts/     Deploy scripts, a live-deployment sanity check, the issuer track record and the simulator
+scripts/lib/ Shared off-chain logic used by the scripts and their tests
+config/      Settings for the scripts (per-network addresses, simulator parameters)
 docs/        Project context: decisions log, timeline, deployments record, report drafts
 ```
 
@@ -51,6 +53,28 @@ npx hardhat run scripts/deployFactory.js --network amoy
 ```
 
 `scripts/checkAmoyDeploy.js` does a live read against the current Amoy deployment, as a sanity check that a deployed contract actually responds on-chain.
+
+### Issuer track record
+
+Adds up each issuer wallet's on-chain history: credentials issued and credentials revoked, sorted by reason, combined across all registries the wallet owns. An issuer with no history is shown as **UNKNOWN**, not as clean. The script only reads data and needs no contract changes. Settings are in `config/trackRecord.json` (set `fromBlock` to the factory's deploy block before using it on a public chain).
+
+```bash
+npx hardhat run scripts/issuerTrackRecord.js --network amoy
+ISSUER=0xabc... JSON=1 npx hardhat run scripts/issuerTrackRecord.js --network amoy
+```
+
+The chain makes this history append-only, and anyone can recompute it. It cannot make the revocation reasons truthful, because each issuer chooses its own. It also cannot see issuances made off-chain. See the header of `scripts/lib/trackRecord.js`.
+
+### Simulator with fake users
+
+Runs a reproducible scenario with synthetic data on the local Hardhat network (it refuses to run on public networks). The cast is honest, careless, rogue and idle issuers, plus honest holders and fake holders using six tactics. A verifier then judges every claim from chain data alone, and the simulator compares each verdict with the ground truth. It also prints each issuer's track record.
+
+```bash
+npx hardhat run scripts/simulate.js            # settings: config/simulation.json
+SIM_CONFIG=my.json JSON=1 npx hardhat run scripts/simulate.js
+```
+
+What the default run shows: no fake claim reaches VERIFIED, and every attempt to link a fake credential onto a degree is blocked. Made-up self-reported certificates are still accepted, but only at the SELF_REPORTED trust level, because the chain can't judge their content. A careless issuer that hashes the wrong file makes genuine degrees fail to verify; if it never notices, its track record still looks clean.
 
 ## Current status
 
