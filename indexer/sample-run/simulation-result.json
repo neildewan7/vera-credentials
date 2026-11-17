@@ -1,0 +1,50 @@
+{
+  "hdsi": "0xAB3B5F907d22f8Cbdd5710B34e10002ad94405d9",
+  "student": "0xE27f4Eb0A0D6dbF64805507ACaE9012a9FdB115d",
+  "degreeId": "0x9fbf538b581bc8576c3ffaa6862d80c71d7af5b7c24265f49b9d7a592cedb220",
+  "grades": [
+    {
+      "course": "DSC 180A",
+      "id": "0x70d0f3fa0f39881736f52f382ccf5036e10b4d9bc4b904bd56e5081852a84cbf"
+    },
+    {
+      "course": "DSC 102",
+      "id": "0x1ef8eed0d9fba9be1e42d7a84c6902b449446c90dea405343d76a48e83532440"
+    }
+  ],
+  "hdsiCredId": "0x6cda93ce9197be4e20488a67aee468986b9a59685280d5e591fe5b5894615789",
+  "awsCertId": "0xb08372ec4ad93a8cf835154e6dbfe3f520e817662c581e0cb159b0470b35ad3e",
+  "results": {
+    "degree": "Active",
+    "DSC 180A": "Active",
+    "DSC 102": "Active",
+    "hdsiCredential": "Active",
+    "awsCredential": "Active"
+  },
+  "txHashes": [
+    {
+      "step": "Register degree",
+      "hash": "0xbd2e3dba1d0cf1b5a7de7b2cbdfd6b99b72bab7d88ee59a9a631607abbb8312f"
+    },
+    {
+      "step": "Register grade (DSC 180A)",
+      "hash": "0x99ce8c40be18a3f5bb2a3d674996a204634698b9ac18e206b8403a083e6ed127"
+    },
+    {
+      "step": "Register grade (DSC 102)",
+      "hash": "0x1edc9e380b412b1ff81cb6a924f0818ace3dec31c8d6e9750ad402288d9f3e55"
+    },
+    {
+      "step": "Register HDSI credential (Teaching Fellowship)",
+      "hash": "0x3da621629d6b8b1fb250c32e732bfadd3bc7c483b396b3c5b099b291ff7aa401"
+    },
+    {
+      "step": "Self-report credential (AWS Cloud Practitioner)",
+      "hash": "0xf3247ac4fe4a60efc84dfac2f44f6966e2d8d9cadef42149a1d4de8366e6de89"
+    },
+    {
+      "step": "Link self-reported credential to degree",
+      "hash": "0x2987d9d6dbf24baa965dd5772ebcf4a0ffb6986ef2660ee705e567cad6c54d56"
+    }
+  ]
+}

@@ -27,6 +27,10 @@ contract RegistryFactory {
     uint256 public nextRegistryId = 1;
     mapping(uint256 => RegistryRecord) public registries;
     mapping(address => uint256[]) private ownerRegistryIds;
+    /// @notice True only for verification registry addresses this factory itself deployed.
+    ///         Lets other contracts (e.g. CredentialRegistry) confirm a given address is
+    ///         a genuine registry before trusting anything it reports about itself.
+    mapping(address => bool) public isRegistry;
 
     event RegistryCreated(
         uint256 indexed registryId,
@@ -89,6 +93,7 @@ contract RegistryFactory {
         // Step 5: Store record and emit event.
         // -----------------------------------------------------------
         registryId = nextRegistryId++;
+        isRegistry[verificationRegistry] = true;
 
         registries[registryId] = RegistryRecord({
             id: registryId,

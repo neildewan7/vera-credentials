@@ -64,6 +64,7 @@ contract DocumentRegistryTemplate {
         emit DocumentRegistered(docId, docHash, msg.sender, holder, uri, block.timestamp);
     }
 
+    /// @dev Ignores revocation — kept only for backward compatibility. Use verify() instead.
     function verifyDocument(bytes32 docId, bytes32 docHash) external view returns (bool) {
         Document memory doc = documents[docId];
         return doc.issuedAt != 0 && doc.docHash == docHash;
