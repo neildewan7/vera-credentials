@@ -17,14 +17,14 @@ const origin = "http://" + host;
 let state = { actor, phase: "preparing", step: 0 };
 let resolveHash;
 
-async function submit(phase, action, request) {
+async function submit(phase, action, request, step) {
   const { data, to, gasLimit, maxFeePerGas, maxPriorityFeePerGas } = request;
   const tx = { from: actor, data, value: "0x0", chainId: "0xaa36a7", type: "0x2",
     gas: ethers.toQuantity(gasLimit), maxFeePerGas: ethers.toQuantity(maxFeePerGas),
     maxPriorityFeePerGas: ethers.toQuantity(maxPriorityFeePerGas) };
   if (to) tx.to = to;
   const result = new Promise(resolve => { resolveHash = resolve; });
-  state = { actor, phase: "ready", step: state.step + 1, action, tx };
+  state = { actor, phase: "ready", step, action, tx };
   const hash = await result;
   for (let tries = 0; tries < 60; tries++) {
     const sent = await ethers.provider.getTransaction(hash);
@@ -77,7 +77,7 @@ const server = http.createServer(async (req, res) => {
 });
 server.listen(18735, "127.0.0.1", async () => {
   try {
-    await benchmark({ wallet, submit });
+    await benchmark({ wallet, submit, resume: process.argv[3] });
     state.phase = "done";
   } catch (err) {
     state.phase = "stopped";
