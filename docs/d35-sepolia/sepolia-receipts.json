@@ -1,0 +1,328 @@
+{
+  "network": "sepolia",
+  "chainId": 11155111,
+  "feeUnit": "test ETH",
+  "actor": "0x6D0D47CaD9AF825083E5dB6FF844A31Dab804Ed3",
+  "artifacts": {
+    "RegistryFactory": {
+      "runtimeHash": "0xa3f72df47ae174a2829043992b7b06ffeeda7bf877483474df3dd12e6f444ec0",
+      "initcodeHash": "0x180478b3753564bff3acefa312d5a299c1c17eba4f73a1c31356a07b41afc2b5",
+      "solc": "0.8.20+commit.a1b79de6",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "evmTarget": "paris"
+    },
+    "IssuerRegistry": {
+      "runtimeHash": "0xc30cb289dcb800001913032b0563f7b2b8e35fa7af99e359b236c31a7359ef3f",
+      "initcodeHash": "0x1be0251a3ca86fe13aedbcd4398202dca55a3d5d716981344495d3bc8ad69b93",
+      "solc": "0.8.20+commit.a1b79de6",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "evmTarget": "paris"
+    },
+    "SelfReportedRegistry": {
+      "runtimeHash": "0xbcb4bb4d5ec01842bd5e72a9b68bfadc7ded2dfb32ed186105b948307dabe7d2",
+      "initcodeHash": "0xb482a5d0a8cfc5c46da836eb7d8aa363fff3710d728756927be6f7db35f0aade",
+      "solc": "0.8.20+commit.a1b79de6",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "evmTarget": "paris"
+    },
+    "CredentialRegistry": {
+      "runtimeHash": "0x75aa443d77444fd815a2be8b089127e5801bdbc6f6fe26942e4947bbb2910b8f",
+      "initcodeHash": "0x9d0b9be07d39936a68d9ac7c001c8b7e8913e81e31990773e70e694055ab056c",
+      "solc": "0.8.20+commit.a1b79de6",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "evmTarget": "paris"
+    }
+  },
+  "inputs": {
+    "registryName": "HDSI Degrees (fixed)",
+    "configHash": "0xf8e23844db6529ea47c7d625e3054435a7690d8fd70038e8d2cfa18f49e317ab",
+    "degreeId": "0xdaf512de61414212f4a5ccb5b759e88c1a3f2ad43bc074d04bc715b00a12073f",
+    "degreeUri": "ipfs://degree",
+    "certId": "0x698fe63a6c2a50d2a06c5fcf34b6be869167f684f7bbb2865bec499f7a0dec77",
+    "certUri": "ipfs://aws-cert"
+  },
+  "addresses": {
+    "RegistryFactory": "0x0F5C076B1392572Ac8f22dc3b4882a32Ad08A6bd",
+    "IssuerRegistry": "0x8ff854E484231be668319eA05646c27289B4D591",
+    "SelfReportedRegistry": "0x3Edcb4eC27995C9D87D0B9E4a14ae44d8f7a697A",
+    "CredentialRegistry": "0xb3745c9fe129D4d7f2fAD3Bb230E9E2C95334EE7",
+    "selfReportedRevocation": "0xd3AE81FA5f481f14B81cd32EA2D681bA55d8A8cc",
+    "DocumentRegistryTemplate": "0xa475796d387FcbF2FC6DAC71DAFED886F12D7901",
+    "RevocationRegistry": "0x303EDb3A344F060F4BAdC2b6b595f22d86891786"
+  },
+  "checks": {
+    "constructorWiring": true,
+    "degree": "Unknown → Active → Revoked",
+    "selfReported": "Active after degree revocation; Revoked after own revocation",
+    "linkReadBack": true
+  },
+  "transactions": [
+    {
+      "phase": "deploy",
+      "action": "RegistryFactory",
+      "txHash": "0x19239cf7a7dff2c36f49ac929e0e95f52235459c47cc185085a5eda39119b625",
+      "status": 1,
+      "blockNumber": 12160988,
+      "blockHash": "0x3e079868c9601dd91003002fa7bc901df27f3006df304ae2087dc205e1e73038",
+      "time": "2026-11-18T10:52:00.000Z",
+      "to": null,
+      "contractAddress": "0x0f5c076b1392572ac8f22dc3b4882a32ad08a6bd",
+      "type": 2,
+      "calldataBytes": 14390,
+      "zeroCalldataBytes": 485,
+      "gasUsed": "22508868",
+      "effectiveGasPriceWei": "18",
+      "feeWei": "405159624",
+      "feeNative": "0.000000000405159624",
+      "explorer": "https://sepolia.etherscan.io/tx/0x19239cf7a7dff2c36f49ac929e0e95f52235459c47cc185085a5eda39119b625"
+    },
+    {
+      "phase": "deploy",
+      "action": "IssuerRegistry",
+      "txHash": "0x63f7593af1bee88895b13471496cd94256cff40e177220c93e1758a2c5ed9022",
+      "status": 1,
+      "blockNumber": 12161004,
+      "blockHash": "0xb12d52b701931325ffda8a483b4c5beee553efe3460767c19550bbab857f3e89",
+      "time": "2026-11-18T10:55:12.000Z",
+      "to": null,
+      "contractAddress": "0x8ff854e484231be668319ea05646c27289b4d591",
+      "type": 2,
+      "calldataBytes": 954,
+      "zeroCalldataBytes": 40,
+      "gasUsed": "1716119",
+      "effectiveGasPriceWei": "18",
+      "feeWei": "30890142",
+      "feeNative": "0.000000000030890142",
+      "explorer": "https://sepolia.etherscan.io/tx/0x63f7593af1bee88895b13471496cd94256cff40e177220c93e1758a2c5ed9022"
+    },
+    {
+      "phase": "deploy",
+      "action": "SelfReportedRegistry",
+      "txHash": "0xccf18351377fe8afba403d874475def56ebb353db394c0f16230dfbc61593d1c",
+      "status": 1,
+      "blockNumber": 12161005,
+      "blockHash": "0x406033f5ab94cc38f99963c23be69b3bfdb2b915c2a8752f842bdb06050e2d00",
+      "time": "2026-11-18T10:55:24.000Z",
+      "to": null,
+      "contractAddress": "0x3edcb4ec27995c9d87d0b9e4a14ae44d8f7a697a",
+      "type": 2,
+      "calldataBytes": 5018,
+      "zeroCalldataBytes": 180,
+      "gasUsed": "7824466",
+      "effectiveGasPriceWei": "18",
+      "feeWei": "140840388",
+      "feeNative": "0.000000000140840388",
+      "explorer": "https://sepolia.etherscan.io/tx/0xccf18351377fe8afba403d874475def56ebb353db394c0f16230dfbc61593d1c"
+    },
+    {
+      "phase": "deploy",
+      "action": "CredentialRegistry",
+      "txHash": "0x3c996adc3d6244a156041c0c4db2d18894bd0319709175c399b8cd741a8c26d0",
+      "status": 1,
+      "blockNumber": 12161007,
+      "blockHash": "0x73e6f478ae117adc9fac48e1fa4ccb76d63ea78c5ef4311cac3a2a371072582e",
+      "time": "2026-11-18T10:56:00.000Z",
+      "to": null,
+      "contractAddress": "0xb3745c9fe129d4d7f2fad3bb230e9e2c95334ee7",
+      "type": 2,
+      "calldataBytes": 2372,
+      "zeroCalldataBytes": 130,
+      "gasUsed": "3314593",
+      "effectiveGasPriceWei": "18",
+      "feeWei": "59662674",
+      "feeNative": "0.000000000059662674",
+      "explorer": "https://sepolia.etherscan.io/tx/0x3c996adc3d6244a156041c0c4db2d18894bd0319709175c399b8cd741a8c26d0"
+    },
+    {
+      "phase": "flow",
+      "action": "IssuerRegistry.addIssuer",
+      "txHash": "0x5907c3b22fdd6d4d7146b0e3bf69de6c7da2da26cd70e2b50a0158194a1c38e1",
+      "status": 1,
+      "blockNumber": 12161016,
+      "blockHash": "0x4fb18e44890b6639dd8cfac2c523100e24a9a4a24dce3cd9f18c8cc0ad464236",
+      "time": "2026-11-18T10:57:48.000Z",
+      "to": "0x8ff854e484231be668319ea05646c27289b4d591",
+      "contractAddress": null,
+      "type": 2,
+      "calldataBytes": 36,
+      "zeroCalldataBytes": 12,
+      "gasUsed": "129237",
+      "effectiveGasPriceWei": "18",
+      "feeWei": "2326266",
+      "feeNative": "0.000000000002326266",
+      "explorer": "https://sepolia.etherscan.io/tx/0x5907c3b22fdd6d4d7146b0e3bf69de6c7da2da26cd70e2b50a0158194a1c38e1"
+    },
+    {
+      "phase": "flow",
+      "action": "RegistryFactory.createRegistry",
+      "txHash": "0x4adbabce26a94a9f26d8a9b2810ea21ddd203d976af8031f0a5356b8896cc614",
+      "status": 1,
+      "blockNumber": 12161018,
+      "blockHash": "0xbc7d3012d4274fbeb286899f1afcb5cda0ef787c7afeee1bfe2d44996d8b9cd4",
+      "time": "2026-11-18T10:58:12.000Z",
+      "to": "0x0f5c076b1392572ac8f22dc3b4882a32ad08a6bd",
+      "contractAddress": null,
+      "type": 2,
+      "calldataBytes": 164,
+      "zeroCalldataBytes": 107,
+      "gasUsed": "9508626",
+      "effectiveGasPriceWei": "18",
+      "feeWei": "171155268",
+      "feeNative": "0.000000000171155268",
+      "explorer": "https://sepolia.etherscan.io/tx/0x4adbabce26a94a9f26d8a9b2810ea21ddd203d976af8031f0a5356b8896cc614"
+    },
+    {
+      "phase": "flow",
+      "action": "DocumentRegistryTemplate.registerDocument",
+      "txHash": "0xfb93e980e3e9f238aa0a414b2a207fa6682c7e1e19965f698f5ed65e97a17e4f",
+      "status": 1,
+      "blockNumber": 12161022,
+      "blockHash": "0x3d1c8b8dd395fd6128c2c901c7d232db1dc10b7a600b61bd1edae100b85223b3",
+      "time": "2026-11-18T10:59:00.000Z",
+      "to": "0xa475796d387fcbf2fc6dac71dafed886f12d7901",
+      "contractAddress": null,
+      "type": 2,
+      "calldataBytes": 196,
+      "zeroCalldataBytes": 93,
+      "gasUsed": "694675",
+      "effectiveGasPriceWei": "18",
+      "feeWei": "12504150",
+      "feeNative": "0.00000000001250415",
+      "explorer": "https://sepolia.etherscan.io/tx/0xfb93e980e3e9f238aa0a414b2a207fa6682c7e1e19965f698f5ed65e97a17e4f"
+    },
+    {
+      "phase": "flow",
+      "action": "SelfReportedRegistry.register",
+      "txHash": "0xf3d968e72f192fb1c9cd900cd88e28d3251962f2817455651c4fe18b1ec750a4",
+      "status": 1,
+      "blockNumber": 12161024,
+      "blockHash": "0x0e9c8fe225917cd3055d91e88ab264580d1f749e37f48d64144f09e137f7a051",
+      "time": "2026-11-18T10:59:24.000Z",
+      "to": "0x3edcb4ec27995c9d87d0b9e4a14ae44d8f7a697a",
+      "contractAddress": null,
+      "type": 2,
+      "calldataBytes": 164,
+      "zeroCalldataBytes": 79,
+      "gasUsed": "581359",
+      "effectiveGasPriceWei": "18",
+      "feeWei": "10464462",
+      "feeNative": "0.000000000010464462",
+      "explorer": "https://sepolia.etherscan.io/tx/0xf3d968e72f192fb1c9cd900cd88e28d3251962f2817455651c4fe18b1ec750a4"
+    },
+    {
+      "phase": "flow",
+      "action": "CredentialRegistry.linkCredential",
+      "txHash": "0x8e35d98ddd2b42dea474f71dbf23e2114bfe7ef27301c7e5d12edde8fc544cd1",
+      "status": 1,
+      "blockNumber": 12161038,
+      "blockHash": "0xba78dce6ed2da3af2a04819244bf3e6d790185da02ba7e2516d7668908d283e4",
+      "time": "2026-11-18T11:02:12.000Z",
+      "to": "0xb3745c9fe129d4d7f2fad3bb230e9e2c95334ee7",
+      "contractAddress": null,
+      "type": 2,
+      "calldataBytes": 100,
+      "zeroCalldataBytes": 12,
+      "gasUsed": "492805",
+      "effectiveGasPriceWei": "18",
+      "feeWei": "8870490",
+      "feeNative": "0.00000000000887049",
+      "explorer": "https://sepolia.etherscan.io/tx/0x8e35d98ddd2b42dea474f71dbf23e2114bfe7ef27301c7e5d12edde8fc544cd1"
+    },
+    {
+      "phase": "flow",
+      "action": "RevocationRegistry.revoke",
+      "txHash": "0xa9a9516fc24fafae0c82d67aadee6d55958999ee2310e69a9dd3834b1706727f",
+      "status": 1,
+      "blockNumber": 12161045,
+      "blockHash": "0x80b3c0ef277b1a35e47a63a6c50b85365ae6dfa1ee5f4a31e85ab1352d798bb5",
+      "time": "2026-11-18T11:03:36.000Z",
+      "to": "0x303edb3a344f060f4badc2b6b595f22d86891786",
+      "contractAddress": null,
+      "type": 2,
+      "calldataBytes": 68,
+      "zeroCalldataBytes": 31,
+      "gasUsed": "242894",
+      "effectiveGasPriceWei": "18",
+      "feeWei": "4372092",
+      "feeNative": "0.000000000004372092",
+      "explorer": "https://sepolia.etherscan.io/tx/0xa9a9516fc24fafae0c82d67aadee6d55958999ee2310e69a9dd3834b1706727f"
+    },
+    {
+      "phase": "flow",
+      "action": "SelfReportedRegistry.revokeMine",
+      "txHash": "0x030f48d597bb708ed1e5299b295482527805a829127d2fcbd12892aeaed18862",
+      "status": 1,
+      "blockNumber": 12161049,
+      "blockHash": "0x74b572b8d8951da91a457fd3b42cf618ec745b5b6c6e14256d20da3b096a6ce1",
+      "time": "2026-11-18T11:04:24.000Z",
+      "to": "0x3edcb4ec27995c9d87d0b9e4a14ae44d8f7a697a",
+      "contractAddress": null,
+      "type": 2,
+      "calldataBytes": 68,
+      "zeroCalldataBytes": 31,
+      "gasUsed": "258114",
+      "effectiveGasPriceWei": "18",
+      "feeWei": "4646052",
+      "feeNative": "0.000000000004646052",
+      "explorer": "https://sepolia.etherscan.io/tx/0x030f48d597bb708ed1e5299b295482527805a829127d2fcbd12892aeaed18862"
+    }
+  ],
+  "completed": true,
+  "totalFeeWei": "850891608",
+  "verification": {
+    "blockNumber": 12161059,
+    "blockHash": "0xee4c39c5189fb2fd85b1d3ae40aa1f7fe4a7d3b11c437b1c0ecc8e20a0cabbff",
+    "runtimeHashes": {
+      "RegistryFactory": "0xa3f72df47ae174a2829043992b7b06ffeeda7bf877483474df3dd12e6f444ec0",
+      "IssuerRegistry": "0xc30cb289dcb800001913032b0563f7b2b8e35fa7af99e359b236c31a7359ef3f",
+      "SelfReportedRegistry": "0xbcb4bb4d5ec01842bd5e72a9b68bfadc7ded2dfb32ed186105b948307dabe7d2",
+      "CredentialRegistry": "0x75aa443d77444fd815a2be8b089127e5801bdbc6f6fe26942e4947bbb2910b8f",
+      "selfReportedRevocation": "0x2f8043741a8b70aab32620794cba49284ca5c860601326668762a6aa5499769b",
+      "DocumentRegistryTemplate": "0xf92f1f4ecd1ce46cfd26214b8140f66cc84e277d21192afe70db8f4a83f5a8fc",
+      "RevocationRegistry": "0x2f8043741a8b70aab32620794cba49284ca5c860601326668762a6aa5499769b"
+    },
+    "receiptCount": 11,
+    "degreeStatus": "Revoked",
+    "selfReportedStatus": "Revoked",
+    "linkHolder": "0x6D0D47CaD9AF825083E5dB6FF844A31Dab804Ed3",
+    "credentialRegistryWiringChecked": true
+  },
+  "totals": {
+    "deploy": {
+      "txCount": 4,
+      "gasUsed": "35364046",
+      "feeWei": "636552828",
+      "feeTestETH": "0.000000000636552828"
+    },
+    "workflow": {
+      "txCount": 7,
+      "gasUsed": "11907710",
+      "feeWei": "214338780",
+      "feeTestETH": "0.00000000021433878"
+    },
+    "matched": {
+      "txCount": 6,
+      "gasUsed": "11649596",
+      "feeWei": "209692728",
+      "feeTestETH": "0.000000000209692728"
+    },
+    "all": {
+      "txCount": 11,
+      "gasUsed": "47271756",
+      "feeWei": "850891608",
+      "feeTestETH": "0.000000000850891608"
+    }
+  }
+}

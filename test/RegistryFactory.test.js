@@ -373,7 +373,7 @@ describe("RegistryFactory + RevocationRegistry", function () {
 
     it("should register → verify → mirror → revoke → invalidate", async function () {
       // Register
-      await verification.connect(user1).registerDataset(dataHash, dataHash, "https://data.example.com");
+      await verification.connect(user1).registerDataset(dataHash, dataHash, "https://data.example.com", user1.address);
       expect(await verification.verifyDataset(dataHash, dataHash)).to.be.true;
       expect(await revocation.isRegistered(dataHash)).to.be.true;
       expect(await revocation.isValid(dataHash)).to.be.true;
@@ -410,7 +410,7 @@ describe("RegistryFactory + RevocationRegistry", function () {
 
     it("should register → verify → mirror → revoke → invalidate", async function () {
       // Register
-      await verification.connect(user1).registerMedia(mediaHash, mediaHash, "ipfs://Qm...");
+      await verification.connect(user1).registerMedia(mediaHash, mediaHash, "ipfs://Qm...", user1.address);
       expect(await verification.verifyImage(mediaHash, mediaHash)).to.be.true;
       expect(await revocation.isRegistered(mediaHash)).to.be.true;
       expect(await revocation.isValid(mediaHash)).to.be.true;

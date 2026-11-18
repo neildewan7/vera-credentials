@@ -3,3 +3,7 @@ node_modules/
 artifacts/
 cache/
 coverage/
+
+# indexer live output (the frozen reference copy lives in indexer/sample-run/)
+indexer/data.json
+indexer/simulation-result.json

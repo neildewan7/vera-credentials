@@ -4,6 +4,7 @@ pragma solidity ^0.8.20;
 import "./SelfReportedRegistry.sol";
 import "./DocumentRegistryTemplate.sol";
 import "./IssuerRegistry.sol";
+import "./RegistryFactory.sol";
 
 /// @title CredentialRegistry
 /// @notice Holds links only — "this self-reported credential belongs to
@@ -21,6 +22,7 @@ contract CredentialRegistry {
 
     SelfReportedRegistry public selfReportedRegistry;
     IssuerRegistry public issuerRegistry;
+    RegistryFactory public registryFactory;
     mapping(bytes32 => Link) private links;
 
     event CredentialLinked(
@@ -31,11 +33,13 @@ contract CredentialRegistry {
         uint256 timestamp
     );
 
-    constructor(address _selfReportedRegistry, address _issuerRegistry) {
+    constructor(address _selfReportedRegistry, address _issuerRegistry, address _registryFactory) {
         require(_selfReportedRegistry != address(0), "Invalid self-reported registry");
         require(_issuerRegistry != address(0), "Invalid issuer registry");
+        require(_registryFactory != address(0), "Invalid registry factory");
         selfReportedRegistry = SelfReportedRegistry(_selfReportedRegistry);
         issuerRegistry = IssuerRegistry(_issuerRegistry);
+        registryFactory = RegistryFactory(_registryFactory);
     }
 
     /// @param childDocId  the self-reported entry being linked
@@ -44,6 +48,7 @@ contract CredentialRegistry {
     function linkCredential(bytes32 childDocId, address parentRegistry, bytes32 parentDocId) external {
         require(links[childDocId].linkedAt == 0, "Already linked");
         require(selfReportedRegistry.holderOf(childDocId) == msg.sender, "Not holder of credential");
+        require(registryFactory.isRegistry(parentRegistry), "Parent registry was not deployed by the factory");
 
         DocumentRegistryTemplate parent = DocumentRegistryTemplate(parentRegistry);
         require(issuerRegistry.isIssuer(parent.owner()), "Parent registry is not an approved issuer");
