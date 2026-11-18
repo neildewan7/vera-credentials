@@ -78,7 +78,7 @@ async function main({ wallet, submit, resume } = {}) {
   } else {
     fs.writeFileSync(output, JSON.stringify({ event: "start", ...evidence }) + "\n", { flag: "wx" });
   }
-  const log = (event) => fs.appendFileSync(output, JSON.stringify(event) + "\n");
+  const log = (event) => fs.appendFileSync(output, JSON.stringify(event) + "\n", { flush: true });
   let spent = 0n;
   let blockTag = "latest";
   const view = (method, ...args) => method.staticCall(...args, { blockTag });
@@ -115,9 +115,20 @@ async function main({ wallet, submit, resume } = {}) {
       assert.equal(tx.to, request.to ?? null);
       assert.equal(tx.data, request.data);
       assert.equal(tx.value, 0n);
+      if (previous.maxFeeWei !== undefined) {
+        assert.ok(tx.maxFeePerGas != null && tx.gasLimit * tx.maxFeePerGas <= BigInt(previous.maxFeeWei),
+          "Saved transaction exceeds the requested fee limit");
+      }
     } else {
-      tx = submit ? await submit(phase, action, request, index + 1) : await signer.sendTransaction(request);
-      log({ event: "submitted", phase, action, txHash: tx.hash });
+      let recordedHash;
+      function recordHash(hash) {
+        if (recordedHash) return assert.equal(hash, recordedHash, "Wallet returned two different transaction hashes");
+        const maxFeeWei = live ? (request.gasLimit * request.maxFeePerGas).toString() : undefined;
+        log({ event: "submitted", phase, action, txHash: hash, maxFeeWei });
+        recordedHash = hash;
+      }
+      tx = submit ? await submit(phase, action, request, index + 1, recordHash) : await signer.sendTransaction(request);
+      recordHash(tx.hash);
     }
     const receipt = await tx.wait(1, 180_000);
     const raw = await ethers.provider.send("eth_getTransactionReceipt", [tx.hash]);
