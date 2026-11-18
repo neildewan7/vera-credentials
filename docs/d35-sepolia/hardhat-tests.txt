@@ -1,0 +1,127 @@
+Source: 37155afa65548366435f7584da787ddece9b898c
+Command: hardhat test --network hardhat
+
+Compiled 10 Solidity files successfully (evm target: paris).
+
+
+  Security regression: CredentialRegistry must reject a fabricated parentRegistry
+    √ rejects a fake contract impersonating an approved issuer's registry (56ms)
+    √ still allows linking to a real, factory-deployed registry owned by an approved issuer
+
+  CredentialRegistry
+    √ should let the holder link their own self-reported credential to their own degree
+    √ should reject linking when the caller is not the holder of the self-reported credential
+    √ should reject linking when the caller is not the holder of the parent degree (spoofing attempt)
+    √ should reject linking to a registry whose owner isn't an approved issuer
+    √ should reject linking the same credential twice
+    √ should emit CredentialLinked on a successful link
+
+  DatasetRegistryTemplate / MediaRegistryTemplate — holder field and verify()
+    DatasetRegistryTemplate
+      √ should let an issuer register on behalf of a different holder
+      √ should reject the zero address as holder
+      √ verify() should return Unknown, then Active, then Revoked
+      √ verify() should return Unknown for a mismatched hash
+    MediaRegistryTemplate
+      √ should let an issuer register on behalf of a different holder
+      √ should reject the zero address as holder
+      √ verify() should return Unknown, then Active, then Revoked
+      √ verify() should return Unknown for a mismatched hash
+
+  DocumentRegistryTemplate — holder field and verify()
+    holder field
+      √ should let an issuer register a document on behalf of a different holder
+      √ should reject registering a document with the zero address as holder
+    verify()
+      √ should return Unknown for a never-registered docId
+      √ should return Active immediately after registration
+      √ should return Revoked after the paired revocation registry revokes it
+      √ should return Unknown when the hash doesn't match the registered docId
+      √ should be callable by anyone, not just the issuer or holder
+
+  End-to-end: issuer registers a degree, holder self-reports + links a credential, revocation
+    √ runs the full flow: register degree -> self-report -> link -> verify -> revoke -> verify again
+
+  IssuerRegistry
+    √ should deploy with the deployer as owner
+    √ should report an unlisted address as not an issuer
+    √ should let the owner add an issuer
+    √ should let the owner remove an issuer
+    √ should reject addIssuer from a non-owner
+    √ should reject removeIssuer from a non-owner
+    √ should reject adding the zero address
+    √ should keep issuers independent of each other
+    √ should emit IssuerAdded and IssuerRemoved events
+    √ should allow ownership transfer, and only the new owner can manage issuers after
+
+  RegistryFactory + RevocationRegistry
+    Factory Deployment
+      √ should deploy factory with nextRegistryId = 1
+    Registry Creation (Coupled Pair)
+      √ should deploy both verification and revocation contracts for DOCUMENT
+      √ should deploy both contracts for DATASET
+      √ should deploy both contracts for MEDIA
+      √ should increment registryId for each creation
+      √ should reject empty name
+      √ should reject invalid template type
+    Tight Coupling
+      √ should link revocation to verification contract
+      √ should transfer revocation ownership to user
+      √ should not allow re-linking
+    Registration with Mirror Register
+      √ should register document on verification registry
+      √ should mirror-register hash on revocation registry
+      √ should show hash as valid (registered + not revoked)
+      √ should reject duplicate registration
+      √ should reject registration from non-owner
+    Revocation Lifecycle
+      √ should revoke a registered hash
+      √ should mark hash as invalid after revocation
+      √ should store revocation reason
+      √ should return full status via getStatus
+      √ should emit Revoked event
+      √ should reject revocation with NONE reason
+      √ should reject double revocation
+      √ should reject revocation of unregistered hash
+      √ should reject revocation from non-owner
+      √ should still show document as registered on verification after revocation
+    Revocation Permissions
+      √ should not allow non-owner to call register directly on revocation
+      √ should not allow factory to call register (factory is no longer owner)
+      √ should allow ownership transfer of revocation registry
+      √ should not allow non-owner to transfer ownership
+    Dataset Template — Full Revocation Flow
+      √ should register → verify → mirror → revoke → invalidate
+    Media Template — Full Revocation Flow
+      √ should register → verify → mirror → revoke → invalidate
+    Registry Isolation
+      √ should keep revocation state isolated between registries
+    Factory Record Storage
+      √ should store correct record with both addresses
+      √ should track owner registries
+    All Revocation Reasons
+      √ should accept reason EXPIRED (1)
+      √ should accept reason SUPERSEDED (2)
+      √ should accept reason KEY_COMPROMISE (3)
+      √ should accept reason AFFILIATION_CHANGED (4)
+      √ should accept reason CESSATION_OF_OPERATION (5)
+      √ should accept reason PRIVILEGE_WITHDRAWN (6)
+      √ should accept reason ADMINISTRATIVE_ERROR (7)
+      √ should accept reason FRAUDULENT (8)
+      √ should accept reason FORMAT_INVALID (9)
+      √ should accept reason OTHER (10)
+
+  SelfReportedRegistry
+    √ should deploy with its own paired, linked revocation registry
+    √ should let anyone register an entry, with holder always set to msg.sender
+    √ should reject duplicate registration of the same docId
+    √ should reject a zero docHash
+    √ should mirror-register the hash on its own revocation registry
+    √ verify() should return Unknown for a never-registered docId
+    √ verify() should return Active after registration
+    √ should let the original holder revoke their own entry
+    √ should reject revocation from anyone other than the entry's own holder
+    √ should reject revoking a docId that was never registered
+
+
+  88 passing (1s)

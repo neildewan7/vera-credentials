@@ -54,3 +54,16 @@ Built `indexer/schema.sql` (Supabase-ready schema), `indexer/store.js` (local JS
 Confirmed working against real Amoy data: correctly indexed 1 issuer, 1 registry, 1 document (degree), 2 self-reported entries, 1 credential link, and 2 revocations (correctly scoped to their own registry's revocation contract) — every field cross-checked against the actual transactions run above.
 
 **Known limitations, honest:** one-shot backfill only (re-run manually, doesn't listen continuously), looks back a fixed 30,000-block window rather than tracking a "last indexed block" cursor, and only indexes `DOCUMENT`-type registries (Dataset/Media not wired in, since neither has been used on-chain yet).
+
+## Ethereum Sepolia — 2026-11-18 (UTC)
+
+Deployer: 0x6D0D47CaD9AF825083E5dB6FF844A31Dab804Ed3. Contract sources: 37155afa65548366435f7584da787ddece9b898c.
+
+| Contract | Address | Deployment receipt |
+|---|---|---|
+| RegistryFactory | 0x0F5C076B1392572Ac8f22dc3b4882a32Ad08A6bd | [0x19239cf7a7dff2c36f49ac929e0e95f52235459c47cc185085a5eda39119b625](https://sepolia.etherscan.io/tx/0x19239cf7a7dff2c36f49ac929e0e95f52235459c47cc185085a5eda39119b625) |
+| IssuerRegistry | 0x8ff854E484231be668319eA05646c27289B4D591 | [0x63f7593af1bee88895b13471496cd94256cff40e177220c93e1758a2c5ed9022](https://sepolia.etherscan.io/tx/0x63f7593af1bee88895b13471496cd94256cff40e177220c93e1758a2c5ed9022) |
+| SelfReportedRegistry | 0x3Edcb4eC27995C9D87D0B9E4a14ae44d8f7a697A | [0xccf18351377fe8afba403d874475def56ebb353db394c0f16230dfbc61593d1c](https://sepolia.etherscan.io/tx/0xccf18351377fe8afba403d874475def56ebb353db394c0f16230dfbc61593d1c) |
+| CredentialRegistry | 0xb3745c9fe129D4d7f2fAD3Bb230E9E2C95334EE7 | [0x3c996adc3d6244a156041c0c4db2d18894bd0319709175c399b8cd741a8c26d0](https://sepolia.etherscan.io/tx/0x3c996adc3d6244a156041c0c4db2d18894bd0319709175c399b8cd741a8c26d0) |
+
+[Workflow receipts, runtime verification and matched Amoy comparison](d35-sepolia/README.md).
