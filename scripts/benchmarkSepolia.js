@@ -12,7 +12,7 @@ const { child_doc_id: certId } = sample.credential_links[0];
 const { uri: certUri } = sample.self_reported.find((entry) => entry.doc_id === certId);
 const status = { unknown: 0n, active: 1n, revoked: 2n };
 
-async function main() {
+async function main({ wallet, submit } = {}) {
   const network = hre.network.name;
   if (!Object.hasOwn(chainIds, network)) {
     throw new Error("Use the in-process Hardhat network or Ethereum Sepolia");
@@ -49,7 +49,7 @@ async function main() {
       }
     }
   }
-  const [signer] = await ethers.getSigners();
+  const signer = wallet ?? (await ethers.getSigners())[0];
   if (!signer) throw new Error("No test wallet configured");
   const actor = await signer.getAddress();
   if (live && await ethers.provider.getBalance(actor) < cap) {
@@ -86,7 +86,7 @@ async function main() {
       }
       request = { ...request, type: 2, gasLimit, maxFeePerGas: fees.maxFeePerGas, maxPriorityFeePerGas: fees.maxPriorityFeePerGas };
     }
-    const tx = await signer.sendTransaction(request);
+    const tx = submit ? await submit(phase, action, request) : await signer.sendTransaction(request);
     log({ event: "submitted", phase, action, txHash: tx.hash });
     const receipt = await tx.wait(1, 180_000);
     const raw = await ethers.provider.send("eth_getTransactionReceipt", [tx.hash]);
@@ -169,7 +169,8 @@ async function main() {
   fs.writeFileSync(output.replace(/\.jsonl$/, ".json"), JSON.stringify(summary, null, 2) + "\n", { flag: "wx" });
 }
 
-main().catch((error) => {
+module.exports = main;
+if (require.main === module) main().catch((error) => {
   // RPC exceptions may contain an authenticated endpoint; only report safe diagnostic codes.
   if (hre.network.name === "sepolia" && error.code) console.error(`Stopped: ${error.code}; see the local evidence journal.`);
   else console.error(error.message);
