@@ -1,0 +1,8 @@
+# Private run evidence is deliberately separate from shareable source/results summaries.
+/local-evidence/
+/local-credentials/
+.env
+.env.*
+*.log
+*.transcript
+*.transcript.txt
