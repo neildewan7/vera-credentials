@@ -1,0 +1,73 @@
+{
+  "issuers": [
+    {
+      "address": "0xAB3B5F907d22f8Cbdd5710B34e10002ad94405d9",
+      "is_approved": true,
+      "updated_at": "2026-11-14T23:49:15.000Z"
+    }
+  ],
+  "registries": [
+    {
+      "id": 1,
+      "owner": "0xAB3B5F907d22f8Cbdd5710B34e10002ad94405d9",
+      "template_type": 0,
+      "verification_registry": "0x72eEe3cefD78aAeeD9a833464839323C2CF51BA8",
+      "revocation_registry": "0x1E819D1Bd35D96A1B280b3ae4944Cd26698E1746",
+      "name": "HDSI Degrees (fixed)",
+      "config_hash": "0xf8e23844db6529ea47c7d625e3054435a7690d8fd70038e8d2cfa18f49e317ab",
+      "created_at": "2026-11-15T04:18:27.000Z"
+    }
+  ],
+  "documents": [
+    {
+      "registry_address": "0x72eEe3cefD78aAeeD9a833464839323C2CF51BA8",
+      "doc_id": "0xdaf512de61414212f4a5ccb5b759e88c1a3f2ad43bc074d04bc715b00a12073f",
+      "doc_hash": "0xdaf512de61414212f4a5ccb5b759e88c1a3f2ad43bc074d04bc715b00a12073f",
+      "issuer": "0xAB3B5F907d22f8Cbdd5710B34e10002ad94405d9",
+      "holder": "0xAB3B5F907d22f8Cbdd5710B34e10002ad94405d9",
+      "uri": "ipfs://degree",
+      "registered_at": "2026-11-15T04:19:12.000Z"
+    }
+  ],
+  "self_reported": [
+    {
+      "doc_id": "0x8101b3e945597cac37ed89150b3ccf3d85cdd99ed1ea6001e22a4364067ceb25",
+      "doc_hash": "0x8101b3e945597cac37ed89150b3ccf3d85cdd99ed1ea6001e22a4364067ceb25",
+      "holder": "0xAB3B5F907d22f8Cbdd5710B34e10002ad94405d9",
+      "uri": "ipfs://aws-cert",
+      "registered_at": "2026-11-14T23:51:41.000Z"
+    },
+    {
+      "doc_id": "0x698fe63a6c2a50d2a06c5fcf34b6be869167f684f7bbb2865bec499f7a0dec77",
+      "doc_hash": "0x698fe63a6c2a50d2a06c5fcf34b6be869167f684f7bbb2865bec499f7a0dec77",
+      "holder": "0xAB3B5F907d22f8Cbdd5710B34e10002ad94405d9",
+      "uri": "ipfs://aws-cert",
+      "registered_at": "2026-11-15T04:20:07.000Z"
+    }
+  ],
+  "credential_links": [
+    {
+      "child_doc_id": "0x698fe63a6c2a50d2a06c5fcf34b6be869167f684f7bbb2865bec499f7a0dec77",
+      "parent_registry": "0x72eEe3cefD78aAeeD9a833464839323C2CF51BA8",
+      "parent_doc_id": "0xdaf512de61414212f4a5ccb5b759e88c1a3f2ad43bc074d04bc715b00a12073f",
+      "holder": "0xAB3B5F907d22f8Cbdd5710B34e10002ad94405d9",
+      "linked_at": "2026-11-15T04:21:03.000Z"
+    }
+  ],
+  "revocations": [
+    {
+      "registry_address": "0x72eEe3cefD78aAeeD9a833464839323C2CF51BA8",
+      "hash": "0xdaf512de61414212f4a5ccb5b759e88c1a3f2ad43bc074d04bc715b00a12073f",
+      "revoked": true,
+      "reason": 7,
+      "revoked_at": "2026-11-15T04:21:50.000Z"
+    },
+    {
+      "registry_address": "0x506cCA5F20F48a0E47e3AEe29067B93A72A36405",
+      "hash": "0x8101b3e945597cac37ed89150b3ccf3d85cdd99ed1ea6001e22a4364067ceb25",
+      "revoked": true,
+      "reason": 1,
+      "revoked_at": "2026-11-14T23:54:22.000Z"
+    }
+  ]
+}

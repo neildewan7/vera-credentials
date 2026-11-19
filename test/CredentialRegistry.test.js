@@ -42,7 +42,8 @@ describe("CredentialRegistry", function () {
     const CredentialRegistry = await hre.ethers.getContractFactory("CredentialRegistry");
     linkContract = await CredentialRegistry.deploy(
       await selfReported.getAddress(),
-      await issuerRegistry.getAddress()
+      await issuerRegistry.getAddress(),
+      await factory.getAddress()
     );
     await linkContract.waitForDeployment();
   });

@@ -155,7 +155,8 @@ async function runSimulation(hre, cfg) {
   const credentialRegistry = await deploy(
     "CredentialRegistry",
     await selfReported.getAddress(),
-    await issuerRegistry.getAddress()
+    await issuerRegistry.getAddress(),
+    await factory.getAddress()
   );
 
   // --- Issuers ---

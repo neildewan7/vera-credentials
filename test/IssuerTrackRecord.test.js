@@ -109,7 +109,7 @@ describe("Issuer Track Record (off-chain script)", function () {
   it("counts Dataset and Media registries via their revocation registry", async function () {
     const ds = await createRegistry(issuerA, 1, "A Datasets");
     const h = hre.ethers.id("dataset-1");
-    await ds.template.connect(issuerA).registerDataset(h, h, "uri");
+    await ds.template.connect(issuerA).registerDataset(h, h, "uri", holder.address);
     await ds.revoc.connect(issuerA).revoke(h, SUPERSEDED);
 
     const rec = (await records()).find((r) => r.issuer === issuerA.address);
