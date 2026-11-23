@@ -5,6 +5,15 @@ UCSD DSC 180A/B capstone (blockchain domain, mentor Prof. Rajesh Gupta, team of 
 
 Mentor's bar: it should only be possible because of blockchain. Be honest in code comments and docs about what the chain adds and what it does not.
 
+## Verified milestone update (2026-11-22 Pacific)
+
+Current contracts include Dataset/Media holder and verify(), the end-to-end test,
+and factory membership enforcement for credential parents. The integrated
+track-record/simulator suite passes 103 tests. The JSON indexer exists, but its
+Supabase adapter and hosted provisioning remain pending. See
+`docs/report/nov24-technical-handoff.md` and `docs/HOSTED_SUPABASE.md`.
+The dated snapshot below is historical where it differs from this update.
+
 ## Current state (2026-11-04)
 - Repo is an import of Vera's `onchain` Hardhat project: `contracts/`, `test/`, `scripts/`, `hardhat.config.js`.
 - Hardhat 2, Solidity 0.8.20, 77 tests passing, CI on GitHub Actions.

@@ -1,5 +1,9 @@
 # Supabase database (issues #12, #13, #14)
 
+For shared hosted provisioning, approval gates, teammate access and reviewed
+deployments, see [the hosted handoff](HOSTED_SUPABASE.md). No hosted project has
+been linked, migrated or validated by the November 22 milestone preparation.
+
 SQL only; no hosted project, deployment, indexer, wallet-verification endpoint,
 file bucket, recruiter app, or department-sharing logic is created here.
 Use synthetic records. The blockchain remains authoritative; database rows are
