@@ -1,0 +1,40 @@
+{
+  "_comment": "Settings for scripts/simulate.js. All data is synthetic. Change the seed to get a different (but reproducible) run. Probabilities are 0..1.",
+  "seed": 4,
+  "issuers": {
+    "honest": 2,
+    "careless": 1,
+    "rogue": 1,
+    "idle": 1
+  },
+  "holders": {
+    "honest": 12,
+    "fake": 6
+  },
+  "honestIssuer": {
+    "supersedeProbability": 0.2
+  },
+  "carelessIssuer": {
+    "errorProbability": 0.5,
+    "catchProbability": 0.5,
+    "errorReasons": ["ADMINISTRATIVE_ERROR", "FORMAT_INVALID"]
+  },
+  "rogueIssuer": {
+    "spoofName": "HDSI Degrees"
+  },
+  "honestHolder": {
+    "selfReportedPerHolder": 1,
+    "linkProbability": 0.75
+  },
+  "fakeHolder": {
+    "tactics": [
+      "steal-degree",
+      "forge-file",
+      "rogue-issuer",
+      "self-report-fake",
+      "link-to-stolen-degree",
+      "link-to-rogue-degree"
+    ]
+  },
+  "certNames": ["Cloud Practitioner", "Data Engineering Certificate", "Intro to ML Certificate", "SQL Certificate"]
+}
